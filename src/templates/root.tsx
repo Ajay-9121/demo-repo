@@ -26,6 +26,7 @@ export const config: TemplateConfig = {
       "meta",
       "name",
       "slug",
+   
       "dm_directoryChildren.name",
       "dm_directoryChildren.slug",
       "dm_directoryChildren.c_addressRegionDisplayName",
@@ -72,13 +73,14 @@ export const getHeadConfig: GetHeadConfig<
 const Index: Template<TemplateRenderProps> = ({
   relativePrefixToRoot,
   document,
+  
 }) => {
-  const { dm_directoryChildren } = document;
+  const { dm_directoryChildren,_site } = document;
 
   return (
     <>
-      <PageLayout>
-        <Banner name={"Turtlehead Tacos"} c_bannerSection={undefined} />
+      <PageLayout _site={_site}>
+        {/* <Banner name={"Turtlehead Tacos"} c_bannerSection={undefined} /> */}
         <div className="centered-container">
           <div className="section space-y-14 px-10">
             <DirectoryRootGrid
