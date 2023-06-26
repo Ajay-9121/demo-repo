@@ -1,0 +1,80 @@
+.top-header {
+  margin-top: 20px;
+  margin-bottom: 25px;
+  background-color: black;
+  color: white;
+  width: 100%;
+  padding: 10px;
+  font-weight: bold;
+}
+.header-menu-link {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 20px;
+}
+.footer-banner {
+  margin-bottom: 40px;
+}
+.footer-icon {
+  padding: 13px;
+}
+.footer-icon {
+  padding: 6px;
+
+  /* border: 1px solid gray; */
+  background-color: deepskyblue;
+  border-radius: 23px;
+  gap: 25px;
+  margin: 2px;
+}
+.footer-icon-img {
+  border-radius: 20px;
+  background-color: deepskyblue;
+}
+.footer-button {
+  background-color: blue;
+  color: white;
+  padding: 8px;
+  margin-top: 11px;
+}
+.nearby-section {
+  display: flex;
+  margin: 65px;
+  gap: 6%;
+  width: 90%;
+}
+.nearby-row {
+  background-color: aliceblue;
+  border-radius: 17px;
+  padding: 25px;
+}
+.store-name {
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  font-family: initial;
+}
+.faq-main-sec {
+  background-color: darkgrey;
+  width: 93%;
+  justify-content: center;
+  text-align: left;
+  margin: 47px;
+  padding: 40px;
+}
+.faq-sec-inner {
+  margin-left: 116px;
+  font-size: 23px;
+}
+.faq-heading {
+  font-size: 20px;
+  font-weight: bold;
+  color: azure;
+  text-align: center;
+  padding-bottom: 30px;
+}
+.min-h-screen {
+	width: 97%;
+	margin: 20px;
+}
