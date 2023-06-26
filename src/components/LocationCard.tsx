@@ -34,10 +34,11 @@ console.log(location,"all locations")
           >
             {location.rawData.neighborhood}
           </a> */}
-          {/* <a href={location.rawData.slug}>{location.rawData.name}</a> */}
+       
           
           <p className="text-sm">{location.rawData.address.line1}</p>
           <p className="text-sm">{`${location.rawData.address.city}, ${location.rawData.address.region} ${location.rawData.address.postalCode}`}</p>
+          <a href={location.rawData.slug}>View Details</a>
         </div>
         <div className="p-5">
           {/* {result.distance} */}
