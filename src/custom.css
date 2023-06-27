@@ -41,7 +41,7 @@
 .nearby-section {
   display: flex;
   margin: 65px;
-  gap: 6%;
+  gap: 10%;
   width: 90%;
 }
 .nearby-row {
@@ -77,4 +77,46 @@
 .min-h-screen {
 	width: 97%;
 	margin: 20px;
+}
+.about-main {
+	display: flex;
+	width: 90%;
+	gap: 5%;
+	margin-left: 69px;
+}
+.about-container {
+	width: 80%;
+	text-align: left;
+	font-size: 18px;
+	font-style: italic;
+}
+.about-title {
+	font-weight: bold;
+	font-size: 45px;
+}
+.about-btn {
+	background-color: aquamarine;
+	padding: 7px;
+	text-transform: capitalize;
+}
+.about-img {
+	width: 67%;
+}
+.button-bx {
+	gap: 18px;
+	padding: 10px;
+	text-align: start;
+	/* color: darkturquoise; */
+}
+.store-details {
+	background-color: darkgray;
+	padding: 5px;
+}
+.get-direction {
+	background-color: yellowgreen;
+	padding: 6px;
+}
+
+.container.mx-auto {
+	background-color: aliceblue;
 }

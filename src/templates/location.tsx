@@ -31,12 +31,15 @@ import Hours from "../components/Hours";
 import PageLayout from "../components/PageLayout";
 import EditTool from "../components/EditTool";
 import BreadCrumbs from "../components/Breadcrumbs";
-import MyComponents from "../components/customMap";
+import CustomMap from "../components/customMap";
 import Nearby from "../components/Nearby";
+import OpenClose from "../components/OpenClose"
+import { StaticData } from "../../site-global/staticData";
 // import { AnswerExperienceConfig } from "../config/answersHeadlessConfig";
 
 import { nearByLocation } from "../types/nearByLocation";
 import Faq from "../components/faq";
+import GetDirection from "../components/GetDirection";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -72,6 +75,7 @@ export const config: TemplateConfig = {
       "dm_directoryParents.meta.entityType",
       "c_faqSection.question",
       "c_faqSection.answer",
+      "c_aboutUsSection",
     ],
     // The entity language profiles that documents will be generated for.
     localization: {
@@ -183,7 +187,7 @@ export const transformProps: TransformProps<ExternalApiData> = async (
 
   // var location = `${data.document.yextDisplayCoordinate ? data.document.yextDisplayCoordinate.latitude : data.document.displayCoordinate.latitude},${data.document.yextDisplayCoordinate ? data.document.yextDisplayCoordinate.longitude : data.document.displayCoordinate.longitude}`;
 
-  const url = `https://liveapi-sandbox.yext.com/v2/accounts/me/answers/vertical/query?experienceKey=five-belo&api_key=a7da2d9674223332b4dcc7f7d19e57b1&v=20220511&version=STAGING&locale=en&verticalKey=locations&retrieveFacets=true&facetFilters=%7B%7D&skipSpellCheck=false&session_id=2ac0eae3-77dc-4f29-b42e-7956c52f44b0&locationRadius=400023360&sessionTrackingEnabled=true&sortBys=[]&source=STANDARD&limit=5`;
+  const url = `https://liveapi-sandbox.yext.com/v2/accounts/me/answers/vertical/query?experienceKey=five-belo&api_key=a7da2d9674223332b4dcc7f7d19e57b1&v=20220511&version=STAGING&locale=en&verticalKey=locations&retrieveFacets=true&facetFilters=%7B%7D&skipSpellCheck=false&session_id=2ac0eae3-77dc-4f29-b42e-7956c52f44b0&locationRadius=400023360&sessionTrackingEnabled=true&sortBys=[]&source=STANDARD&limit=4`;
 
   console.log(url);
   const externalApiData = (await fetch(url).then((res: any) =>
@@ -208,6 +212,8 @@ const Location: Template<ExternalApiRenderData> = ({
     hours,
     mainPhone,
     services,
+    latitude,
+    longitude,
     description,
     siteDomain,
     _site,
@@ -215,6 +221,9 @@ const Location: Template<ExternalApiRenderData> = ({
     c_faqSection,
     c_bannerSection,
     c_fooetbnSection,
+    c_aboutUsSection,
+    c_getDirectionsCTAText
+    
   } = document;
 
   return (
@@ -227,24 +236,39 @@ const Location: Template<ExternalApiRenderData> = ({
         <Banner
           // name={name}
           address={address}
+          // phone={mainPhone}
           c_bannerSection={c_bannerSection}
         />
 
         <div className="centered-container">
          
           <div className=" grid gap-x-10 gap-y-10 md:grid-cols-3">
-            
-            <Details address={address} phone={mainPhone} services={services} />
-
+           
+            <Details address={address} phone={mainPhone} services={services} hours={hours} c_getDirectionsCTAText={c_getDirectionsCTAText} latitude={latitude} longitude={longitude}/>
+           
             {hours && <Hours title={"Restaurant Hours"} hours={hours} />}
 
-            {description && <About name={name} description={description} />}
+            {/* {description && <About name={name} description={description} />} */}
+           
             <div>
-              <MyComponents />
+              <CustomMap />
             </div>
           </div>
         </div>
-        <Faq faqs={c_faqSection} />
+        {/* about section */}
+        <div className="about-main">
+        <div className="about-img">
+            <img src={c_aboutUsSection.aboutimg.url} alt="" height={100} width={700} />
+          </div>
+          <div className="about-container">
+            <h1 className="about-title">{c_aboutUsSection.title}</h1>
+          <p>{c_aboutUsSection.description}</p>
+          <button className="about-btn"><a href="#">{c_aboutUsSection.viewmore.label}</a></button>
+          </div>
+         
+        </div>
+        
+        <Faq prop={c_faqSection} c_fAQsCta={document.c_fAQsCta} />
         <Nearby externalApiData={externalApiData} />
       </PageLayout>
       {/* This component displays a link to the entity that represents the given page in the Knowledge Graph*/}

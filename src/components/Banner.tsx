@@ -32,11 +32,11 @@ const Banner = (props: BannerProps) => {
           style={{ display: "flex", marginLeft: "30px" }}
         >
           <div
-            className="w-96 my-8 rounded-xl bg-danger-500  shadow-xl border-amber-600 px-4 py-2 text-center"
+            className="w-96 my-8 rounded-xl  shadow-xl border-amber-600 px-4 py-2 text-center"
             style={{ backgroundColor: "#f7f7f7" }}
           >
             <div>
-              <h1 className="text-black text-3xl mt5 font-bold">{name}</h1>
+              <h1 className="text-black text-3xl pt-5 font-bold">{name}</h1>
               <p className="text-lg pt-2 text-black font-semibold">
                 {renderPrettyAddress(address)}
               </p>

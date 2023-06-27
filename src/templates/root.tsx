@@ -4,6 +4,7 @@ import Banner from "../components/Banner";
 import DirectoryRootGrid from "../components/DirectoryRootGrid";
 import Favicon from "../assets/images/yext-favicon.ico";
 import "../index.css";
+import "../custom.css";
 import {
   Template,
   GetPath,
@@ -26,7 +27,6 @@ export const config: TemplateConfig = {
       "meta",
       "name",
       "slug",
-   
       "dm_directoryChildren.name",
       "dm_directoryChildren.slug",
       "dm_directoryChildren.c_addressRegionDisplayName",
