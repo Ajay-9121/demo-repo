@@ -65,6 +65,9 @@ export const config: TemplateConfig = {
       "hours",
       "slug",
       "geocodedCoordinate",
+      "displayCoordinate",
+      "cityCoordinate",
+      "yextDisplayCoordinate",
       "services",
       "photoGallery",
       "c_fooetbnSection",
@@ -215,6 +218,10 @@ const Location: Template<ExternalApiRenderData> = ({
     latitude,
     longitude,
     description,
+    geocodedCoordinate,
+    displayCoordinate,
+    cityCoordinate,
+    yextDisplayCoordinate,
     siteDomain,
     _site,
     dm_directoryParents,
@@ -225,6 +232,7 @@ const Location: Template<ExternalApiRenderData> = ({
     c_getDirectionsCTAText
     
   } = document;
+  console.log('document', document)
 
   return (
     <>

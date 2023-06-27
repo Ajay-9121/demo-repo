@@ -5,18 +5,27 @@ import List from "../components/List";
 import GetDirection from "./GetDirection";
 import OpenClose from "./OpenClose";
 import { StaticData } from "../../site-global/staticData";
-export interface DetailsProps {
-  address: any;
-  phone?: string;
-  services?: string[];
-  hours:any;
-  c_getDirectionsCTAText:any
-  latitude:any
-  longitude:any
-  
-}
 
-const Details = ({ address, phone, services,hours,c_getDirectionsCTAText,latitude, longitude}: DetailsProps,props:any) => {
+
+
+
+const Details = (props:any) =>
+
+
+{
+  const {
+    address,
+    phone,
+    latitude,
+    longitude,
+    hours,
+    c_specific_day,
+    additionalHoursText,
+    yextDisplayCoordinate,
+    c_storeInfoHeading,
+    c_getDirectionsCTAText,
+    services
+  } = props;
   return (
     <>
       <div className="border-b border-gray-300 bg-gray-100 shadow-md rounded-lg p-2 px-4 py-5 sm:p-6">
@@ -40,7 +49,7 @@ const Details = ({ address, phone, services,hours,c_getDirectionsCTAText,latitud
           
           <div className="bg-red w-20 p-1">
           <GetDirection
-              buttonText={c_getDirectionsCTAText?c_getDirectionsCTAText:StaticData.getDirection}
+              buttonText={"Get Direction"}
               address={address}
               latitude={latitude}
               longitude={longitude}
@@ -48,6 +57,8 @@ const Details = ({ address, phone, services,hours,c_getDirectionsCTAText,latitud
           </div>
           <OpenClose  hours={hours} deliveryHours={hours}/>
         </div>
+       
+      
       </div>
     </>
   );

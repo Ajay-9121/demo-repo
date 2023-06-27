@@ -17,7 +17,7 @@ export default function Nearby(props: any) {
         Nearby stores
       </h1>
       <div className="nearby-section">
-        {nearByLocation.map((location: any, index: number) => {
+        {nearByLocation?.map((location: any, index: number) => {
           if (index > 0) {
             return (
               <>
@@ -27,7 +27,7 @@ export default function Nearby(props: any) {
 
                 <div className="nearby-card">
                     <div className="location-name-miles icon-row">
-                      <h2><Link className="inline-block notHighlight" href={`/${location.data.id}`}
+                      <h2><Link className="inline-block notHighlight" href={`/${location.data.id.toLowerCase()}`}
                         data-ya-track={`${location.data.name}`}
                         eventName={`${location.data.name}`}
                         rel="noopener noreferrer">{location.data.name}</Link></h2>
@@ -59,7 +59,7 @@ export default function Nearby(props: any) {
                     </div> 
                     <div className="button-bx flex">
                       <div className="store-details">
-                      <Link className="btn" href={`/${location.data.id}`}
+                      <Link className="btn" href={`/${location.data.id.toLowerCase()}`}
                        data-ya-track={`viewstore-${location.data.name}`}
                        eventName={`viewstore-${location.data.name}`}
                        rel="noopener noreferrer">
