@@ -246,7 +246,7 @@ export interface ComplexVideo {
   description?: string;
 }
 
-export interface Location {
+export default interface Location {
   c_click_collect_availability: any;
   c_open_for_shopping: any;
   c_clickCollectAvaliability: any;
@@ -289,7 +289,7 @@ export interface Location {
   description?: string;
   hours?: Hours;
   logo?: ComplexImage;
-  name: string;
+  // name: string;
   categories?: any;
   cityCoordinate?: Coordinate;
   closed?: boolean;

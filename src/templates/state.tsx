@@ -82,7 +82,7 @@ export const transformProps: TransformProps<any> = async (data) => {
   const { dm_directoryParents, name } = data.document;
 
   (dm_directoryParents || []).push({ name: name, slug: "" });
-
+console.log(dm_directoryParents,"sfhsgdfjh")
   return {
     ...data,
     document: {
@@ -105,7 +105,15 @@ const State: Template<TemplateRenderProps> = ({
     dm_directoryChildren,
     _site,
   } = document;
-
+  // console.log(name)
+  console.log(dm_directoryChildren)
+  const newurl=dm_directoryChildren.map((index:any)=>{
+    return (
+      <>
+      {index.slug}
+      </>
+    )
+  });
   return (
     <>
       <PageLayout _site={_site}>
@@ -126,6 +134,7 @@ const State: Template<TemplateRenderProps> = ({
             directoryChildren={dm_directoryChildren}
             relativePrefixToRoot={relativePrefixToRoot}
           />
+          {/* {newurl} */}
         </div>
       </PageLayout>
       {/* This component displays a link to the entity that represents the given page in the Knowledge Graph*/}

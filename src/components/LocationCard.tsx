@@ -2,7 +2,7 @@
 
 import { CardComponent, CardProps } from "@yext/search-ui-react";
 import * as React from "react";
-import Location, { Coordinate } from "../types/locations";
+import Location, { Coordinate } from "../types/Location";
 import { RiDirectionFill } from "react-icons/ri";
 import { StaticData } from "../../site-global/staticData";
 

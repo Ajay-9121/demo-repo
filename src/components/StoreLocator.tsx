@@ -91,7 +91,7 @@ const StoreLocator = (): JSX.Element => {
               value: {
                 lat: location.coords.latitude,
                 lng: location.coords.longitude,
-                radius: 30233.6, // equivalent to 25 miles
+                radius: 300000233.6, 
               },
               matcher: Matcher.Near,
             },
@@ -109,7 +109,7 @@ const StoreLocator = (): JSX.Element => {
               value: {
                 lat: 55.953251,
                 lng: -3.188267,
-                radius: 30233.6, // equivalent to 25 miles
+                radius: 3000233.6, 
               },
               matcher: Matcher.Near,
             },
