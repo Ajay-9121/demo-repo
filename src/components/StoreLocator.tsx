@@ -71,7 +71,7 @@ const StoreLocator = (): JSX.Element => {
 
 
   const searchActions = useSearchActions();
-
+console.log(resultCount,"resultCount")
   // new code starts here...
   const [initialSearchState, setInitialSearchState] =
     useState<InitialSearchState>("not started");
@@ -179,9 +179,12 @@ const StoreLocator = (): JSX.Element => {
             ]}
             
           />
+           Show Result: {resultCount}
           
           {resultCount > 0 && <VerticalResults CardComponent={LocationCard}
+          
            customCssClasses={{ verticalResultsContainer: "overflow-y-auto" }}/>}
+          
           {resultCount === 0 && initialSearchState === "complete" && (
             <div className="flex items-center justify-center">
               <p className="pt-4 text-2xl">No results found for this area</p>

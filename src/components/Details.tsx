@@ -49,7 +49,7 @@ const Details = (props:any) =>
           
           <div className="bg-red w-20 p-1">
           <GetDirection
-              buttonText={"Get Direction"}
+              buttonText={"Direction"}
               address={address}
               latitude={latitude}
               longitude={longitude}

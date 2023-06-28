@@ -82,7 +82,7 @@ export const transformProps: TransformProps<any> = async (data) => {
   const { dm_directoryParents, name } = data.document;
 
   (dm_directoryParents || []).push({ name: name, slug: "" });
-console.log(dm_directoryParents,"sfhsgdfjh")
+
   return {
     ...data,
     document: {
@@ -108,12 +108,18 @@ const State: Template<TemplateRenderProps> = ({
   // console.log(name)
   console.log(dm_directoryChildren)
   const newurl=dm_directoryChildren.map((index:any)=>{
+    // console.log(index.slug)
     return (
       <>
-      {index.slug}
+      <ul>
+        <li className="flex gap-5"><a href={"mgm"+index.slug}>{index.name}</a></li>
+      </ul>
+
       </>
     )
+    
   });
+ 
   return (
     <>
       <PageLayout _site={_site}>
@@ -130,11 +136,14 @@ const State: Template<TemplateRenderProps> = ({
             name={
               c_addressRegionDisplayName ? c_addressRegionDisplayName : name
             }
-            description={description}
+            // description={description}
             directoryChildren={dm_directoryChildren}
             relativePrefixToRoot={relativePrefixToRoot}
           />
-          {/* {newurl} */}
+          {/* <div className=" flex gap-20">
+          {newurl}
+          </div> */}
+       
         </div>
       </PageLayout>
       {/* This component displays a link to the entity that represents the given page in the Knowledge Graph*/}
