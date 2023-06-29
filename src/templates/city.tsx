@@ -29,7 +29,8 @@ import Banner from "../components/Banner";
 import DirectoryCityGrid from "../components/DirectoryCityGrid";
 import PageLayout from "../components/PageLayout";
 import EditTool from "../components/EditTool";
-import Breadcrumbs from "../components/Breadcrumbs";
+
+import BreadCrumbs from "../components/Breadcrumbs";
 
 export const config: TemplateConfig = {
   stream: {
@@ -122,6 +123,7 @@ const City: Template<TemplateRenderProps> = ({
     name,
     slug,
     description,
+    address,
     siteDomain,
     dm_directoryParents,
     dm_directoryChildren,
@@ -133,10 +135,12 @@ const City: Template<TemplateRenderProps> = ({
       <PageLayout _site={_site}>
         {/* <Banner name={name} c_bannerSection={undefined} /> */}
         <div className="centered-container">
-          <Breadcrumbs
-            breadcrumbs={dm_directoryParents}
-            baseUrl={relativePrefixToRoot}
-             parents={dm_directoryParents}          />
+        <BreadCrumbs
+              name={name}
+              parents={dm_directoryParents}
+              baseUrl={relativePrefixToRoot}
+              // address={address}
+            ></BreadCrumbs>
           <DirectoryCityGrid
             name={name}
             slug ={slug}

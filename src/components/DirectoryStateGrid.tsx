@@ -23,6 +23,7 @@ const DirectoryStateGrid = ({
   slug,
   description,
   directoryChildren,
+  directoryParents,
   relativePrefixToRoot,
 }: DirectoryGridProps) => {
   let sortedChildren;
@@ -41,7 +42,7 @@ const DirectoryStateGrid = ({
       </div>
     ));
   }
-  console.log(relativePrefixToRoot,"dfghsjkfdhjkl")
+  // console.log(document,"dfghsjkfdhjkl")
   return (
     <>
       <div className="section space-y-14 px-10">

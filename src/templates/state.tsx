@@ -19,7 +19,7 @@ import Banner from "../components/Banner";
 import DirectoryStateGrid from "../components/DirectoryStateGrid";
 import PageLayout from "../components/PageLayout";
 import EditTool from "../components/EditTool";
-import Breadcrumbs from "../components/Breadcrumbs";
+// import Breadcrumbs from "../components/Breadcrumbs";
 import BreadCrumbs from "../components/Breadcrumbs";
 
 export const config: TemplateConfig = {
@@ -90,9 +90,9 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
 };
 
 export const transformProps: TransformProps<any> = async (data) => {
-  const { dm_directoryParents, name } = data.document;
+  const { dm_directoryParents, name, address} = data.document;
 
-  (dm_directoryParents || []).push({ name: name, slug: "" });
+  (dm_directoryParents || []).push({ name: name, slug: "" ,address});
 
   return {
     ...data,
@@ -131,11 +131,12 @@ const State: Template<TemplateRenderProps> = ({
         /> */}
         <div className="centered-container">
         <BreadCrumbs
-              name={name}
-              parents={dm_directoryParents}
-              baseUrl={relativePrefixToRoot}
-              address={address}
-            ></BreadCrumbs>
+            name={name}
+            parents={dm_directoryParents}
+            baseUrl={relativePrefixToRoot} address={address}              
+              // address={address}
+            />
+            
           <DirectoryStateGrid
             name={
               c_addressRegionDisplayName ? c_addressRegionDisplayName : name
