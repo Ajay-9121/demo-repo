@@ -24,7 +24,7 @@ import { isProduction } from "@yext/pages/util";
 import "../index.css";
 
 import "../custom.css";
-import Favicon from "../assets/images/yext-favicon.ico";
+// import Favicon from "../assets/images/yext-favicon.ico";
 import Banner from "../components/Banner";
 import DirectoryCityGrid from "../components/DirectoryCityGrid";
 import PageLayout from "../components/PageLayout";
@@ -62,7 +62,18 @@ export const config: TemplateConfig = {
 };
 
 export const getPath: GetPath<TemplateProps> = ({ document }) => {
-  return `${document.slug.toString()}`;
+  // return `${document.slug.toString()}`;
+
+  var url: any = ""
+  document.dm_directoryParents.map((i: any) => {
+    if (i.meta?.entityType.id == 'ce_country') {
+      url = `${i.slug}`
+    }
+    else if (i.meta?.entityType.id == 'ce_region') {
+      url = `${url}/${i.slug}/${document.slug.toString()}.html`
+    }
+  })
+  return url;
 };
 
 export const getRedirects: GetRedirects<TemplateProps> = ({ document }) => {
@@ -82,7 +93,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
         attributes: {
           rel: "icon",
           type: "image/x-icon",
-          href: Favicon,
+          // href: Favicon,
         },
       },
     ],
@@ -109,6 +120,7 @@ const City: Template<TemplateRenderProps> = ({
 }) => {
   const {
     name,
+    slug,
     description,
     siteDomain,
     dm_directoryParents,
@@ -124,9 +136,10 @@ const City: Template<TemplateRenderProps> = ({
           <Breadcrumbs
             breadcrumbs={dm_directoryParents}
             baseUrl={relativePrefixToRoot}
-          />
+             parents={dm_directoryParents}          />
           <DirectoryCityGrid
             name={name}
+            slug ={slug}
             description={description}
             directoryChildren={dm_directoryChildren}
             relativePrefixToRoot={relativePrefixToRoot}

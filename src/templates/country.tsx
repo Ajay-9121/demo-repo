@@ -224,14 +224,14 @@ const country: Template<TemplateRenderProps> = ({
       else {
         detlslug = slug + "/" + entity.slug;
         // detlslug =entity.slug;
-        console.log(detlslug,"ajju145371")
+        console.log(detlslug,"145371")
       }
     }
     return (
       <li className=" storelocation-category">
         <a
           key={entity.slug}
-          href={detlslug}>
+          href={detlslug +".html"}>
           {entity.name} ({entity.dm_baseEntityCount})
         </a>
       </li>
@@ -248,7 +248,7 @@ const country: Template<TemplateRenderProps> = ({
       <div className="centered-container">
           <Breadcrumbs
             breadcrumbs={dm_directoryParents}
-            baseUrl={relativePrefixToRoot} parents={undefined}           
+            baseUrl={relativePrefixToRoot} parents={dm_directoryParents}           
           />
           
           {/* <DirectoryStateGrid

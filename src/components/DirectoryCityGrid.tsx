@@ -6,6 +6,7 @@ import { DirectoryChild } from "../types/DirectoryChild";
 
 export interface DirectoryGridProps {
   name?: string;
+  slug:any
   description?: string;
   directoryParents?: DirectoryParent[];
   directoryChildren?: DirectoryChild[];
@@ -20,6 +21,7 @@ const sortByCity = (a: DirectoryChild, b: DirectoryChild) => {
 
 const DirectoryCityGrid = ({
   name,
+  slug,
   description,
   directoryChildren,
   relativePrefixToRoot,
@@ -28,7 +30,9 @@ const DirectoryCityGrid = ({
 
   if (directoryChildren) {
     const sortedChildren = directoryChildren?.sort(sortByCity) || [];
-    childrenDivs = sortedChildren.map((child: any) => (
+    childrenDivs = sortedChildren.map((child: any) =>(
+      // console.log(child.slug)
+   
       <div
         key={child.slug}
         className="border rounded-lg drop-shadow-md bg-gray-100 space-y-6 p-3 h-60"
@@ -36,7 +40,7 @@ const DirectoryCityGrid = ({
         <h2>
           <a
             className="font-bold text-2xl text-blue-700 hover:underline"
-            href={relativePrefixToRoot + child.slug}
+            href={  "gb"+"/"+"scotland"+"/"+slug+"/"+child.slug +".html"}
           >
             {child.name}
           </a>
@@ -48,8 +52,11 @@ const DirectoryCityGrid = ({
           <span>{formatPhoneNumber(child.mainPhone)}</span>
         </div>
       </div>
-    ));
-  }
+    
+    ))}
+    
+  
+  
   return (
     <>
       <div className="section space-y-14 px-10">

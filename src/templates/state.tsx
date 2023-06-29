@@ -14,7 +14,7 @@ import {
 } from "@yext/pages";
 import { isProduction } from "@yext/pages/util";
 import "../index.css";
-import Favicon from "../assets/images/yext-favicon.ico";
+// import Favicon from "../assets/images/yext-favicon.ico";
 import Banner from "../components/Banner";
 import DirectoryStateGrid from "../components/DirectoryStateGrid";
 import PageLayout from "../components/PageLayout";
@@ -51,7 +51,17 @@ export const config: TemplateConfig = {
 };
 
 export const getPath: GetPath<TemplateProps> = ({ document }) => {
-  return `${document.slug.toString()}`;
+  // return `${document.slug.toString()}`;
+
+  let url = "";
+  document.dm_directoryParents.map((i: any) => {
+    if (i.meta?.entityType.id == 'ce_country') {
+      url += i.slug + "/";
+    }
+  });
+  url += document.slug.toString();
+
+  return url + '.html';
 };
 
 export const getRedirects: GetRedirects<TemplateProps> = ({ document }) => {
@@ -71,7 +81,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
         attributes: {
           rel: "icon",
           type: "image/x-icon",
-          href: Favicon,
+          // href: Favicon,
         },
       },
     ],
@@ -98,6 +108,7 @@ const State: Template<TemplateRenderProps> = ({
 }) => {
   const {
     name,
+    slug,
     description,
     siteDomain,
     c_addressRegionDisplayName,
@@ -107,18 +118,7 @@ const State: Template<TemplateRenderProps> = ({
   } = document;
   // console.log(name)
   console.log(dm_directoryChildren)
-  const newurl=dm_directoryChildren.map((index:any)=>{
-    // console.log(index.slug)
-    return (
-      <>
-      <ul>
-        <li className="flex gap-5"><a href={"mgm"+index.slug}>{index.name}</a></li>
-      </ul>
 
-      </>
-    )
-    
-  });
  
   return (
     <>
@@ -129,6 +129,7 @@ const State: Template<TemplateRenderProps> = ({
         /> */}
         <div className="centered-container">
           <Breadcrumbs
+          parents={dm_directoryParents}
             breadcrumbs={dm_directoryParents}
             baseUrl={relativePrefixToRoot}
           />
@@ -137,12 +138,11 @@ const State: Template<TemplateRenderProps> = ({
               c_addressRegionDisplayName ? c_addressRegionDisplayName : name
             }
             // description={description}
+            slug={slug}
             directoryChildren={dm_directoryChildren}
             relativePrefixToRoot={relativePrefixToRoot}
           />
-          {/* <div className=" flex gap-20">
-          {newurl}
-          </div> */}
+       
        
         </div>
       </PageLayout>

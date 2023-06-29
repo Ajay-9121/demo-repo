@@ -4,6 +4,7 @@ import { DirectoryChild } from "../types/DirectoryChild";
 
 interface DirectoryGridProps {
   name?: string;
+  slug?:any;
   description?: string;
   directoryParents?: DirectoryParent[];
   directoryChildren?: DirectoryChild[];
@@ -19,6 +20,7 @@ const sortByName = (
 
 const DirectoryStateGrid = ({
   name,
+  slug,
   description,
   directoryChildren,
   relativePrefixToRoot,
@@ -31,7 +33,7 @@ const DirectoryStateGrid = ({
       <div key={child.slug}>
         <a
           key="uRL"
-          href={relativePrefixToRoot + child.slug}
+          href={"gb"+"/"+slug +"/" + child.slug +".html"}
           className="font-bold text-2xl text-blue-700 hover:underline"
         >
           {child.name} ({child.dm_childEntityIds?.length || 0})
@@ -39,6 +41,7 @@ const DirectoryStateGrid = ({
       </div>
     ));
   }
+  console.log(relativePrefixToRoot,"dfghsjkfdhjkl")
   return (
     <>
       <div className="section space-y-14 px-10">
