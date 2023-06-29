@@ -33,7 +33,7 @@ const DirectoryStateGrid = ({
       <div key={child.slug}>
         <a
           key="uRL"
-          href={"gb"+"/"+slug +"/" + child.slug +".html"}
+          href={slug +"/" + child.slug +".html"}
           className="font-bold text-2xl text-blue-700 hover:underline"
         >
           {child.name} ({child.dm_childEntityIds?.length || 0})
