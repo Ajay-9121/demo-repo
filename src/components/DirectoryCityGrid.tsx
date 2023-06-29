@@ -40,7 +40,7 @@ const DirectoryCityGrid = ({
         <h2>
           <a
             className="font-bold text-2xl text-blue-700 hover:underline"
-            href={  "gb"+"/"+"scotland"+"/"+slug+"/"+child.slug +".html"}
+            href={slug+"/"+child.slug +".html"}
           >
             {child.name}
           </a>
