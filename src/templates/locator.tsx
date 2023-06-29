@@ -26,7 +26,7 @@ export const getPath: GetPath<TemplateProps> = () => {
 
 export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = () => {
   return {
-    title: "MGM Timber Locator",
+    title: "FiveBlow Locator",
     charset: "UTF-8",
     viewport: "width=device-width, initial-scale=1",
   };

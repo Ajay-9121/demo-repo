@@ -222,9 +222,9 @@ const country: Template<TemplateRenderProps> = ({
         })
       }
       else {
-        // detlslug = slug + "/" + entity.slug;
-        detlslug =entity.slug;
-        // console.log(detlslug,"naman145371")
+        detlslug = slug + "/" + entity.slug;
+        // detlslug =entity.slug;
+        console.log(detlslug,"ajju145371")
       }
     }
     return (

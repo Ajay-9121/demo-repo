@@ -35,7 +35,7 @@ const Details = (props:any) =>
             address={address}
             lines={[
               ["line1", "line2"],
-              ["city", ",", "region"],
+              ["city", 'region']
             ]}
           />
           {phone && (

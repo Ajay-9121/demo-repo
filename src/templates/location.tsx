@@ -33,6 +33,7 @@ import EditTool from "../components/EditTool";
 import BreadCrumbs from "../components/Breadcrumbs";
 import CustomMap from "../components/customMap";
 import Nearby from "../components/Nearby";
+import PhotoGallery from "../components/PhotoGallery";
 import OpenClose from "../components/OpenClose"
 import { StaticData } from "../../site-global/staticData";
 // import { AnswerExperienceConfig } from "../config/answersHeadlessConfig";
@@ -79,6 +80,7 @@ export const config: TemplateConfig = {
       "c_faqSection.question",
       "c_faqSection.answer",
       "c_aboutUsSection",
+      "c_photoGallery",
     ],
     // The entity language profiles that documents will be generated for.
     localization: {
@@ -98,11 +100,24 @@ export const config: TemplateConfig = {
  * and ensure that each entity has the slug field pouplated.
  */
 export const getPath: GetPath<TemplateProps> = ({ document }) => {
-  return document.slug
-    ? document.slug
-    : `${document.locale}/${document.address.region}/${document.address.city}/${
-        document.address.line1
-      }-${document.id.toString()}`;
+  var url = "";
+  var name: any = document.name.toLowerCase();
+  var string: any = name.toString();;
+  let result: any = string.replaceAll(" ", "-");
+  document.dm_directoryParents.map((result: any, i: number) => {
+    if (i > 0) {
+      url += result.slug + "/"
+    }
+  })
+  if (!document.slug) {
+    url += `${result}.html`;
+  } else {
+    url += `${document.slug.toString()}.html`;
+  }
+ 
+  return url;
+  
+  
 };
 
 /**
@@ -223,6 +238,7 @@ const Location: Template<ExternalApiRenderData> = ({
     cityCoordinate,
     yextDisplayCoordinate,
     siteDomain,
+    c_photoGallery,
     _site,
     dm_directoryParents,
     c_faqSection,
@@ -238,11 +254,10 @@ const Location: Template<ExternalApiRenderData> = ({
     <>
       <PageLayout _site={_site}>
       <BreadCrumbs
-            breadcrumbs={dm_directoryParents}
-            baseUrl={relativePrefixToRoot}
-          />
+          breadcrumbs={dm_directoryParents}
+          baseUrl={relativePrefixToRoot} parents={undefined}          />
         <Banner
-          // name={name}
+          name={name}
           address={address}
           // phone={mainPhone}
           c_bannerSection={c_bannerSection}
@@ -278,6 +293,18 @@ const Location: Template<ExternalApiRenderData> = ({
         
         <Faq prop={c_faqSection} c_fAQsCta={document.c_fAQsCta} />
         <Nearby externalApiData={externalApiData} />
+        {/* <PhotoGallery c_photoGallery={c_photoGallery}/> */}
+        <div  className="flex">
+        {c_photoGallery.map((index:any)=>{
+          return <>
+          <div>
+          <img src={index.url} alt="" height={100} width={300} />
+          </div>
+          
+          </>
+        })}
+        </div>
+       
       </PageLayout>
       {/* This component displays a link to the entity that represents the given page in the Knowledge Graph*/}
       {!isProduction(siteDomain) && <EditTool data={document} />}

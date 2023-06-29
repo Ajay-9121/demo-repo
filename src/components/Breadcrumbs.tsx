@@ -19,6 +19,7 @@ export interface BreadCrumbsProps {
   className?: string;
   separator?: ReactNode;
   baseUrl: string;
+  parents:any;
 }
 
 const Breadcrumb = (props: BreadCrumbProps) => {

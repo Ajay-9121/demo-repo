@@ -32,8 +32,8 @@ const Banner = (props: BannerProps) => {
           style={{ display: "flex", marginLeft: "30px" }}
         >
           <div
-            className="w-96 my-8 rounded-xl  shadow-xl border-amber-600 px-4 py-2 text-center"
-            style={{ backgroundColor: "#f7f7f7" }}
+            className="w-96 my-8    border-amber-600 px-4 py-70 text-center"
+            style={{ paddingTop: "50px"}}
           >
             <div>
               <h1 className="text-black text-3xl pt-5 font-bold">{name}</h1>
