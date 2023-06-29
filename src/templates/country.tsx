@@ -222,7 +222,7 @@ const country: Template<TemplateRenderProps> = ({
         })
       }
       else {
-        detlslug = slug + "/" + entity.slug;
+        detlslug = slug + "/" + entity.slug +".html";
         // detlslug =entity.slug;
         console.log(detlslug,"145371")
       }
@@ -231,7 +231,7 @@ const country: Template<TemplateRenderProps> = ({
       <li className=" storelocation-category">
         <a
           key={entity.slug}
-          href={detlslug +".html"}>
+          href={detlslug}>
           {entity.name} ({entity.dm_baseEntityCount})
         </a>
       </li>

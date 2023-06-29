@@ -36,6 +36,7 @@ import Nearby from "../components/Nearby";
 import PhotoGallery from "../components/PhotoGallery";
 import OpenClose from "../components/OpenClose"
 import { StaticData } from "../../site-global/staticData";
+import FeaturesBrand from "../components/FeatureBrand";
 // import { AnswerExperienceConfig } from "../config/answersHeadlessConfig";
 
 import { nearByLocation } from "../types/nearByLocation";
@@ -81,6 +82,7 @@ export const config: TemplateConfig = {
       "c_faqSection.answer",
       "c_aboutUsSection",
       "c_photoGallery",
+      "c_featureBrand"
     ],
     // The entity language profiles that documents will be generated for.
     localization: {
@@ -245,7 +247,8 @@ const Location: Template<ExternalApiRenderData> = ({
     c_bannerSection,
     c_fooetbnSection,
     c_aboutUsSection,
-    c_getDirectionsCTAText
+    c_getDirectionsCTAText,
+    c_featureBrand,
     
   } = document;
   console.log('document', document)
@@ -254,8 +257,11 @@ const Location: Template<ExternalApiRenderData> = ({
     <>
       <PageLayout _site={_site}>
       <BreadCrumbs
-          breadcrumbs={dm_directoryParents}
-          baseUrl={relativePrefixToRoot} parents={undefined}          />
+              name={name}
+              parents={dm_directoryParents}
+              baseUrl={relativePrefixToRoot}
+              address={address}
+            ></BreadCrumbs>
         <Banner
           name={name}
           address={address}
@@ -290,20 +296,23 @@ const Location: Template<ExternalApiRenderData> = ({
           </div>
          
         </div>
-        
-        <Faq prop={c_faqSection} c_fAQsCta={document.c_fAQsCta} />
-        <Nearby externalApiData={externalApiData} />
-        {/* <PhotoGallery c_photoGallery={c_photoGallery}/> */}
-        <div  className="flex">
+         {/* <PhotoGallery c_photoGallery={c_photoGallery}/> */}
+         <div  className="flex gap-5 m-10">
         {c_photoGallery.map((index:any)=>{
           return <>
           <div>
-          <img src={index.url} alt="" height={100} width={300} />
+          <img src={index.url} alt="" height={100} width={250} />
           </div>
           
           </>
         })}
         </div>
+       
+        <Nearby externalApiData={externalApiData} />
+        <FeaturesBrand c_featureBrand={c_featureBrand}/>
+        <Faq prop={c_faqSection} c_fAQsCta={document.c_fAQsCta} />
+
+       
        
       </PageLayout>
       {/* This component displays a link to the entity that represents the given page in the Knowledge Graph*/}

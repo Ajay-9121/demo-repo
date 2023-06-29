@@ -120,3 +120,24 @@
 .container.mx-auto {
 	background-color: aliceblue;
 }
+.Features-brand {
+	/* margin: 4%; */
+	/* background-color: #eff5f5; */
+	padding: 2%;
+}
+.logo-img {
+	width: 10%;
+	height: 55%;
+	padding: 5px;
+}
+.splide__slide img {
+	width: 50%;
+}
+.splide__track {
+	overflow: hidden;
+	position: relative;
+	z-index: 0;
+	margin-left: 76px;
+	margin-top: 60px;
+	/* padding: 31px; */
+}
