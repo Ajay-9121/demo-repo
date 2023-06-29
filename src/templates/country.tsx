@@ -248,8 +248,7 @@ const country: Template<TemplateRenderProps> = ({
       <div className="centered-container">
           <Breadcrumbs
             breadcrumbs={dm_directoryParents}
-            baseUrl={relativePrefixToRoot}
-           
+            baseUrl={relativePrefixToRoot} parents={undefined}           
           />
           
           {/* <DirectoryStateGrid
