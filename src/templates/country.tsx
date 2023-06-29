@@ -16,6 +16,7 @@ import { favicon, regionNames, stagingBaseurl } from "../../site-global/global";
 
 import PageLayout from "../components/PageLayout";
 import DirectoryStateGrid from "../components/DirectoryStateGrid";
+import BreadCrumbs from "../components/Breadcrumbs";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -246,10 +247,12 @@ const country: Template<TemplateRenderProps> = ({
     <>
       <PageLayout _site={_site} >
       <div className="centered-container">
-          <Breadcrumbs
-            breadcrumbs={dm_directoryParents}
-            baseUrl={relativePrefixToRoot} parents={dm_directoryParents}           
-          />
+      <BreadCrumbs
+              name={name}
+              parents={dm_directoryParents}
+              baseUrl={relativePrefixToRoot}
+              address={address}
+            ></BreadCrumbs>
           
           {/* <DirectoryStateGrid
             

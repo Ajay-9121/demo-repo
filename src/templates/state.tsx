@@ -20,6 +20,7 @@ import DirectoryStateGrid from "../components/DirectoryStateGrid";
 import PageLayout from "../components/PageLayout";
 import EditTool from "../components/EditTool";
 import Breadcrumbs from "../components/Breadcrumbs";
+import BreadCrumbs from "../components/Breadcrumbs";
 
 export const config: TemplateConfig = {
   stream: {
@@ -109,6 +110,7 @@ const State: Template<TemplateRenderProps> = ({
   const {
     name,
     slug,
+    address,
     description,
     siteDomain,
     c_addressRegionDisplayName,
@@ -128,11 +130,12 @@ const State: Template<TemplateRenderProps> = ({
           c_bannerSection={undefined}
         /> */}
         <div className="centered-container">
-          <Breadcrumbs
-          parents={dm_directoryParents}
-            breadcrumbs={dm_directoryParents}
-            baseUrl={relativePrefixToRoot}
-          />
+        <BreadCrumbs
+              name={name}
+              parents={dm_directoryParents}
+              baseUrl={relativePrefixToRoot}
+              address={address}
+            ></BreadCrumbs>
           <DirectoryStateGrid
             name={
               c_addressRegionDisplayName ? c_addressRegionDisplayName : name
