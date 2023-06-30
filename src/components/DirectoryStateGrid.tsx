@@ -34,7 +34,7 @@ const DirectoryStateGrid = ({
       <div key={child.slug}>
         <a
           key="uRL"
-          href={slug +"/" + child.slug +".html"}
+          href={"scotland"+"/"+ child.slug +".html"}
           className="font-bold text-2xl text-blue-700 hover:underline"
         >
           {child.name} ({child.dm_childEntityIds?.length || 0})
@@ -42,7 +42,7 @@ const DirectoryStateGrid = ({
       </div>
     ));
   }
-  // console.log(document,"dfghsjkfdhjkl")
+  console.log(childrenDivs,"dfghsjkfdhjkl")
   return (
     <>
       <div className="section space-y-14 px-10">
