@@ -26,7 +26,7 @@ const Breadcrumb = (props: BreadCrumbProps) => {
 console.log(slug,"sdflksdjfgl;dsjfgh;dfkl;h")
   if (slug) {
     return (
-      <Link href={slug}>
+      <Link href={slug +".html"}>
         <span className="font-bold hover:underline hover:cursor-pointer">
           {name}
         </span>
