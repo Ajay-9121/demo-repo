@@ -42,6 +42,9 @@ import FeaturesBrand from "../components/FeatureBrand";
 import { nearByLocation } from "../types/nearByLocation";
 import Faq from "../components/faq";
 import GetDirection from "../components/GetDirection";
+import { TemplateMeta, constant } from "../contant";
+import { DirectoryParent } from "../types/DirectoryParent";
+import { LocationDocument } from "../types/env";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -109,7 +112,7 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
   let result: any = string.replaceAll(" ", "-");
   document?.dm_directoryParents?.map((result: any, i: number) => {
     if (i > 0) {
-      url += result.slug + "/"
+      url += result.slug + ""
     }
   })
   if (!document.slug) {
@@ -222,10 +225,19 @@ type ExternalApiRenderData = TemplateRenderProps & {
   externalApiData: nearByLocation;
 }
 
-const Location: Template<ExternalApiRenderData> = ({
+interface Locationtype extends ExternalApiRenderData{
+  relativePrefixToRoot:string,
+  document:LocationDocument,
+  externalApiData:nearByLocation,
+  __meta:TemplateMeta
+}
+
+
+const Location: Template<Locationtype> = ({
   relativePrefixToRoot,
   document,
   externalApiData,
+  __meta
 }) => {
   const {
     name,
@@ -252,13 +264,22 @@ const Location: Template<ExternalApiRenderData> = ({
     c_featureBrand,
     
   } = document;
-  console.log('document', document)
+  console.log('document',)
+  const breadcrumbs = constant.getBreadcrumb<DirectoryParent, LocationDocument>(
+    dm_directoryParents,
+    document,
+    __meta,
+    false,
+    1,
+    "/",
+   ""
+  );
 
   return (
     <>
       <PageLayout _site={_site}>
       <BreadCrumbs
-            breadcrumbs={dm_directoryParents}
+            breadcrumbs={breadcrumbs}
             baseUrl={relativePrefixToRoot}
           />
         <Banner

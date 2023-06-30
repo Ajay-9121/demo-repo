@@ -33,7 +33,7 @@ const Breadcrumb = (props: BreadCrumbProps) => {
       </Link>
     );
   }
-
+console.log(props,"sluurl")
   return <span className="Breadcrumbs-label">{name}</span>;
 };
 
