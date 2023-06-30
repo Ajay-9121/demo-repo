@@ -136,18 +136,14 @@ const City: Template<TemplateRenderProps> = ({
         {/* <Banner name={name} c_bannerSection={undefined} /> */}
         <div className="centered-container">
         <BreadCrumbs
-              name={name}
-              parents={dm_directoryParents}
-              baseUrl={relativePrefixToRoot}
-              // address={address}
-            ></BreadCrumbs>
+            breadcrumbs={dm_directoryParents}
+            baseUrl={relativePrefixToRoot}
+          />
           <DirectoryCityGrid
             name={name}
-            slug ={slug}
             description={description}
             directoryChildren={dm_directoryChildren}
-            relativePrefixToRoot={relativePrefixToRoot}
-          />
+            relativePrefixToRoot={relativePrefixToRoot} slug={slug}          />
         </div>
       </PageLayout>
       {!isProduction(siteDomain) && <EditTool data={document} />}

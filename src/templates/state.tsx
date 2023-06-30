@@ -131,18 +131,14 @@ const State: Template<TemplateRenderProps> = ({
         /> */}
         <div className="centered-container">
         <BreadCrumbs
-            name={name}
-            parents={dm_directoryParents}
-            baseUrl={relativePrefixToRoot} address={address}              
-              // address={address}
-            />
-            
+            breadcrumbs={dm_directoryParents}
+            baseUrl={relativePrefixToRoot}
+          />
           <DirectoryStateGrid
             name={
               c_addressRegionDisplayName ? c_addressRegionDisplayName : name
             }
-            // description={description}
-            slug={slug}
+            description={description}
             directoryChildren={dm_directoryChildren}
             relativePrefixToRoot={relativePrefixToRoot}
           />

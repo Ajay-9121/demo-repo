@@ -1,127 +1,81 @@
 import * as React from "react";
-import { breadcrumbhome, conversionDetailsDirection } from "../../site-global/global";
-import { regionNames } from "../../site-global/global";
+import { ReactNode } from "react";
+import { HomeIcon } from "@heroicons/react/20/solid";
 import { Link } from "@yext/pages/components";
-type data = {
-  name: any;
-  parents: any;
-  baseUrl: any;
-  address: any;
+import  classNames from "classnames";
+
+export interface BreadCrumbProps {
+  name: string;
+  slug?: string;
+  breadcrumbs?: Array<BreadCrumbProps>;
+  className?: string;
+  separator?: ReactNode;
+  baseUrl: string;
+}
+
+export interface BreadCrumbsProps {
+  name?: any;
+  breadcrumbs?: Array<BreadCrumbProps>;
+  className?: string;
+  separator?: ReactNode;
+  baseUrl: string;
+}
+
+const Breadcrumb = (props: BreadCrumbProps) => {
+  const { name, slug } = props;
+
+  if (slug) {
+    return (
+      <Link href={slug}>
+        <span className="font-bold hover:underline hover:cursor-pointer">
+          {name}
+        </span>
+      </Link>
+    );
+  }
+
+  return <span className="Breadcrumbs-label">{name}</span>;
 };
 
-const BreadCrumbs = (props: data) => {
+const BreadCrumbs = (props: BreadCrumbsProps) => {
+  const { breadcrumbs, className, separator = ">", baseUrl } = props;
 
-  const [list, setList] = React.useState(null);
- var breadcrumbs;
-  var data: any = [];
-  React.useEffect(() => {
-    setURL(props.parents, props.baseUrl);
-  console.log(props.parents)
-  }, [setList]);
-
-  const setURL = (parents: any, baseUrl: any) => {
-
-
-    if (parents) {
-      for (let i = 0; i < parents.length; i++) {
-
-           
-       if (parents[i].meta.entityType.id == "ce_country") {
-          // parents[i].name = regionNames.of(parents[i].name);
- 
-          parents[i].slug = parents[i].slug;
-          
-          data.push({
-            name: regionNames.of(parents[i].name),
-            slug: parents[i].slug,
-            count:parents[i].dm_directoryChildrenCount
-          });
-
-        } 
-        else if (parents[i].meta.entityType.id == "ce_region") {
-      
-          data.push({ name: parents[i].name, slug:`${parents[i-1].slug}/${parents[i].slug}`, 
-          count:parents[i].dm_directoryChildrenCount});
-          parents[i].name = parents[i].name;
-          parents[i].slug = `${parents[i-1].slug}/${parents[i].slug}`;
-        } else if (parents[i].meta.entityType.id == "ce_city") {
-       
-          parents[i].name = parents[i].name;
-          parents[i].slug = `${parents[i - 1].slug}/${parents[i].slug}`;
-          data.push({
-            name: parents[i].name,
-            slug: parents[i].slug,
-            count:parents[i].dm_directoryChildrenCount
-          });
-        }
-      }
-
-
-      breadcrumbs = data.map((crumb: any) => (
-        <li key={crumb.slug}>
-          {(crumb.count==1)?<Link href="javascript:void(0)" className="cursor-not-allowed"
-          data-ya-track="Breadcrumbs"
-          eventName={`Breadcrumbs`}
-          rel="noopener noreferrer"
-          conversionDetails={conversionDetailsDirection}
-          > {crumb.name}</Link>
-          :<Link href={baseUrl + crumb.slug + ".html"}
-          data-ya-track="Breadcrumbs"
-          eventName={`Breadcrumbs`}
-          rel="noopener noreferrer"
-          conversionDetails={conversionDetailsDirection}> {crumb.name}</Link>}
-          
-        </li> 
-      ));
-      setList(breadcrumbs);
-    } else {
-      setList(null);
-    }
-  };
-  console.log('ajju',props.baseUrl);
   return (
-    <div className="breadcrumb">
-      <div className="container mx-auto">
-        <ul className="flex">
-          <li>
-            <Link className="home" href="/"
-             data-ya-track="Breadcrumbs"
-             eventName={`Breadcrumbs`}
-             rel="noopener noreferrer"
-             conversionDetails={conversionDetailsDirection}>
-            <div dangerouslySetInnerHTML={{__html: breadcrumbhome}}/>
-            </Link>
-          </li>
-          {/* <li>
-            <a href="https://main-sushi--issue--quotation-sbx-pgsdemo-com.sbx.preview.pagescdn.com/">Store Locator</a>
-          </li> */}
-          {list ? (
-            list
-          ) : (
-            <>
-              {props.address && props.address.city ? (
-                <li className="inline-block">
-                  {" "}
-                  <Link href={props.baseUrl + props.address.city }
-                   data-ya-track="Breadcrumbs"
-                   eventName={`Breadcrumbs`}
-                   rel="noopener noreferrer"
-                   conversionDetails={conversionDetailsDirection}>
-                    {props.address.city ? props.address.city : ""}
-                  </Link>
-                </li>
-              ) : (
-                <></>
-              )}
-            </>
-          )}
-         
-          <li>{props && props.name}</li>
+    <nav className="section flex" aria-label="Breadcrumb">
+      {breadcrumbs?.length && (
+        <nav
+          className={classNames("Breadcrumbs", className)}
+          aria-label="Breadcrumb"
+        >
+          <ol className="flex space-x-4">
+            {breadcrumbs.map(({ name, slug }, idx) => {
+              const isLast = idx === breadcrumbs.length - 1;
+              const isFirst = idx === 0;
 
-        </ul>
-      </div>
-    </div>
-       
+              return (
+                <li className="Breadcrumbs-item flex" key={idx}>
+                  {isFirst ? (
+                    <Breadcrumb
+                      name={<HomeIcon className="h-5 w-5" aria-hidden="true" />}
+                      slug={isLast ? "" : baseUrl + slug}
+                      {...props}
+                    />
+                  ) : (
+                    <Breadcrumb
+                      name={name}
+                      slug={isLast ? "" : baseUrl + slug}
+                      {...props}
+                    />
+                  )}
+                  {!isLast && <span className="pl-4">{separator}</span>}
+                </li>
+              );
+            })}
+          </ol>
+        </nav>
+      )}
+    </nav>
   );
 };
+
 export default BreadCrumbs;

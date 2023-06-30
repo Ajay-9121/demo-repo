@@ -248,20 +248,17 @@ const country: Template<TemplateRenderProps> = ({
       <PageLayout _site={_site} >
       <div className="centered-container">
       <BreadCrumbs
-              name={name}
-              parents={dm_directoryParents}
-              baseUrl={relativePrefixToRoot}
-              address={address}
-            ></BreadCrumbs>
+            breadcrumbs={dm_directoryParents}
+            baseUrl={relativePrefixToRoot}
+          />
           
           {/* <DirectoryStateGrid
-            
+            name={
+              c_addressRegionDisplayName ? c_addressRegionDisplayName : name
+            }
             description={description}
             directoryChildren={dm_directoryChildren}
             relativePrefixToRoot={relativePrefixToRoot}
-            name={
-                c_addressRegionDisplayName ? c_addressRegionDisplayName : name
-              }
           /> */}
         </div>
       <div className="content-list">

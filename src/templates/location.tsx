@@ -257,11 +257,9 @@ const Location: Template<ExternalApiRenderData> = ({
     <>
       <PageLayout _site={_site}>
       <BreadCrumbs
-              name={name}
-              parents={dm_directoryParents}
-              baseUrl={relativePrefixToRoot}
-              address={address}
-            ></BreadCrumbs>
+            breadcrumbs={dm_directoryParents}
+            baseUrl={relativePrefixToRoot}
+          />
         <Banner
           name={name}
           address={address}
