@@ -21,7 +21,7 @@ import {
 import { FilterSearch } from "@yext/search-ui-react";
 
 export const getPath: GetPath<TemplateProps> = () => {
-  return `index.html`;
+  return `locator`;
 };
 
 export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = () => {

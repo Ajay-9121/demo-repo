@@ -23,10 +23,10 @@ export interface BreadCrumbsProps {
 
 const Breadcrumb = (props: BreadCrumbProps) => {
   const { name, slug } = props;
-
+console.log(slug,"sdflksdjfgl;dsjfgh;dfkl;h")
   if (slug) {
     return (
-      <Link href={slug +".html"}>
+      <Link href={slug}>
         <span className="font-bold hover:underline hover:cursor-pointer">
           {name}
         </span>
