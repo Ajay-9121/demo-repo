@@ -112,7 +112,7 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
   let result: any = string.replaceAll(" ", "-");
   document?.dm_directoryParents?.map((result: any, i: number) => {
     if (i > 0) {
-      url += result.slug + ""
+      url += result.slug + "/"
     }
   })
   if (!document.slug) {
