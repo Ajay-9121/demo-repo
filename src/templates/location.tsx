@@ -103,6 +103,7 @@ export const config: TemplateConfig = {
  */
 export const getPath: GetPath<TemplateProps> = ({ document }) => {
   var url = "";
+ 
   var name: any = document.name.toLowerCase();
   var string: any = name.toString();;
   let result: any = string.replaceAll(" ", "-");
@@ -116,7 +117,7 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
   } else {
     url += `${document.slug.toString()}.html`;
   }
- 
+
   return url;
   
   

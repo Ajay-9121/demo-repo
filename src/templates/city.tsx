@@ -75,6 +75,24 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
     }
   })
   return url;
+
+
+
+   // if (document.dm_directoryParents) {
+  //   document?.dm_directoryParents?.map((i: any) => {
+  //     if (i.meta?.entityType.id == "ce_country") {
+  //       currentUrl = `${i.slug}/${document.slug.toString()}.html`;
+  //     } else if (i.meta?.entityType.id == "ce_region") {
+  //       let url = `${document?.dm_directoryParents?.slug}/${
+  //         i.slug
+  //       }/${document.slug.toString()}.html`;
+  //       currentUrl = url;
+  //     }
+  //   });
+  //   return `/${currentUrl}`;
+  // } else {
+  //   return `/${document.slug.toString()}.html`;
+  // }
 };
 
 export const getRedirects: GetRedirects<TemplateProps> = ({ document }) => {
