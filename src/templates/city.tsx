@@ -31,6 +31,10 @@ import PageLayout from "../components/PageLayout";
 import EditTool from "../components/EditTool";
 
 import BreadCrumbs from "../components/Breadcrumbs";
+import { TemplateMeta, constant } from "../contant";
+import { DirectoryParent } from "../types/DirectoryParent";
+import { LocationDocument } from "../types/env";
+import { nearByLocation } from "../types/nearByLocation";
 
 export const config: TemplateConfig = {
   stream: {
@@ -133,9 +137,11 @@ export const transformProps: TransformProps<any> = async (data) => {
   };
 };
 
+
+
 const City: Template<TemplateRenderProps> = ({
   relativePrefixToRoot,
-  document,
+  document
 }) => {
   const {
     name,
@@ -146,7 +152,19 @@ const City: Template<TemplateRenderProps> = ({
     dm_directoryParents,
     dm_directoryChildren,
     _site,
+    
+    __meta,
   } = document;
+
+  const breadcrumbs = constant.getBreadcrumb<DirectoryParent, LocationDocument>(
+    dm_directoryParents,
+    document,
+    __meta,
+    false,
+    1,
+    "/",
+   ""
+  );
 
   return (
     <>
@@ -154,7 +172,7 @@ const City: Template<TemplateRenderProps> = ({
         {/* <Banner name={name} c_bannerSection={undefined} /> */}
         <div className="centered-container">
         <BreadCrumbs
-            breadcrumbs={dm_directoryParents}
+            breadcrumbs={breadcrumbs}
             baseUrl={relativePrefixToRoot}
           />
           <DirectoryCityGrid
