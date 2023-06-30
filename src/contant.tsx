@@ -19,7 +19,7 @@ getBreadcrumb<DataType, Document>(
     const breadcrumbs: BreadcrumbItem[] = [];
 
     if (isRecursive) {
-      data.forEach((element: DataType, index: number) => {
+      data?.forEach((element: DataType, index: number) => {
         if (index >= skip && index !== 0) {
           const slug = constant.getRecursiveData<DataType>(element, meta, skip);
           breadcrumbs.push({
@@ -40,7 +40,7 @@ getBreadcrumb<DataType, Document>(
       });
     } else {
       let slug = "";
-      data.forEach((element: DataType, index: number) => {
+      data?.forEach((element: DataType, index: number) => {
         if (element.slug && index >= skip) {
           slug += `/${element.slug}`;
           breadcrumbs.push({
