@@ -4,6 +4,7 @@ import { Link } from "@yext/pages/components";
 import Address from "../components/Address";
 import GetDirection from "../components/GetDirection";
 import OpenClose from "../components/OpenClose"
+import phone from "../images/icons8-phone-16.png"
 
 export default function Nearby(props: any) {
   console.log(props);
@@ -18,13 +19,10 @@ export default function Nearby(props: any) {
       </h1>
       <div className="nearby-section">
         {nearByLocation?.map((location: any, index: number) => {
+          console.log(location,index,"locvatiohndfkjkghdfhujkjk")
           if (index > 0) {
             return (
               <>
-          
-
-
-
                 <div className="nearby-card">
                     <div className="location-name-miles icon-row">
                       <h2><Link className="inline-block notHighlight" href={`/${location.data.id.toLowerCase()}`}
@@ -34,13 +32,13 @@ export default function Nearby(props: any) {
 
                     </div>
                     <div className="icon-row content-col">
-                      <Address address={location.data.address} />
+                      <Address address={location.data.address}  />
                       <div className="distance">
                       {/* {metersToMiles(location.distance)}<span>miles</span> */}
                       </div>
                       
                     </div>
-                    <div>{location.data.mainPhone}</div>
+                    <div className="flex"><img src={phone} alt="" />{location.data.mainPhone}</div>
                     
                     <div className="icon-row closeing-div">
                     {location.data.hours?

@@ -4,7 +4,7 @@ import { regionNames } from "../../site-global/global";
 const Address = (props: any) => {
     const { address } = props;
     var gmaps = "https://www.google.com/maps/dir/?api=1&destination=";
-    var gmapsAddress = gmaps.concat(address.line1, ' ', address.city, ' ', address.region, ' ', address.postalCode,' ',address.mainPhone);
+    var gmapsAddress = gmaps.concat(address.name,address.line1, ' ', address.city, ' ', address.region, ' ', address.postalCode,' ',address.mainPhone);
     var gmapsLink = gmapsAddress.concat('"');
 console.log(address)
   return (

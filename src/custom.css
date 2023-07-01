@@ -12,6 +12,7 @@
   margin-bottom: 20px;
   font-weight: 700;
   font-size: 20px;
+  cursor: pointer;
 }
 .footer-banner {
   margin-bottom: 40px;
@@ -137,12 +138,45 @@
 	overflow: hidden;
 	position: relative;
 	z-index: 0;
-	margin-left: 76px;
+	margin-left: 68px;
 	margin-top: 60px;
+  margin-right: 50px;
 	/* padding: 31px; */
 }
 abbr:where([title]) {
 	-webkit-text-decoration: underline dotted;
 	text-decoration: underline dotted;
 	text-decoration: navajowhite;
+}
+.nearby-card {
+	border: 1px solid skyblue;
+	box-shadow: crimson;
+	padding: 14px;
+	border-radius: 20px;
+	background-color: honeydew;
+}
+
+.location-name-miles.icon-row {
+	font-size: 22px;
+	font-weight: 583;
+	font-style: revert;
+	font-family: initial;
+	color: darkcyan;
+}
+.title-name {
+	font-size: 22px;
+	font-weight: 583;
+	font-style: revert;
+	font-family: initial;
+	color: darkcyan;
+}
+.splide__slide img {
+	width: 50%;
+	margin-top: 28px;
+}
+.flex.p-x-15 {
+	padding: 12px;
+	font-size: 18px;
+	font-family: initial;
+	/* font-style: inherit; */
 }

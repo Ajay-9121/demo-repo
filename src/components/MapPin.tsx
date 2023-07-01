@@ -2,9 +2,10 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/server";
 import { PinComponent } from "@yext/search-ui-react";
 import { Popup, LngLatLike, Map } from "mapbox-gl";
-import Location, { Coordinate } from "../types/locations";
+import Location, { Coordinate } from "../types/Location";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { GiTacos } from "react-icons/gi";
+import { GiCommercialAirplane } from "react-icons/gi";
+import marker from "../images/map.svg";
 import { Result } from "@yext/search-headless-react";
 
 const transformToMapboxCoord = (
@@ -21,9 +22,9 @@ const getLocationHTML = (location: Location) => {
   const address = location.address;
   const html = (
     <div>
-      <p className="font-bold">{location.name || "unknown location"}</p>
-      <p>{location.address.line1}</p>
-      <p>{`${address.city}, ${address.region}, ${address.postalCode}`}</p>
+      <p className="font-bold text-sm text-red">{location.name || "unknown location"}</p>
+      <p className="text-sm">{location.address.line1}</p>
+      <p className="text-sm">{`${address.city}, ${address.region}, ${address.postalCode}`}</p>
     </div>
   );
   return ReactDOM.renderToString(html);
@@ -64,7 +65,9 @@ const MapPin: PinComponent<Location> = ({
 
   return (
     <button onClick={handleClick}>
-      <GiTacos className="text-orange" size={30} />
+      {/* <GiCommercialAirplane className="text-green"  size={30} /> */}
+      <img src={marker} width={70} alt=""/>
+     
     </button>
   );
 };

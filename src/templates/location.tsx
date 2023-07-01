@@ -45,6 +45,7 @@ import GetDirection from "../components/GetDirection";
 import { TemplateMeta, constant } from "../contant";
 import { DirectoryParent } from "../types/DirectoryParent";
 import { LocationDocument } from "../types/env";
+import { AnswerExperienceConfig } from "../config/AnswerExperienceConfig";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -209,10 +210,9 @@ export const transformProps: TransformProps<ExternalApiData> = async (
   data: any
 ) => {
 
-  // var location = `${data.document.yextDisplayCoordinate ? data.document.yextDisplayCoordinate.latitude : data.document.displayCoordinate.latitude},${data.document.yextDisplayCoordinate ? data.document.yextDisplayCoordinate.longitude : data.document.displayCoordinate.longitude}`;
+  var location = `${data.document.yextDisplayCoordinate ? data.document.yextDisplayCoordinate.latitude : data.document.displayCoordinate.latitude},${data.document.yextDisplayCoordinate ? data.document.yextDisplayCoordinate.longitude : data.document.displayCoordinate.longitude}`;
 
-  const url = `https://liveapi-sandbox.yext.com/v2/accounts/me/answers/vertical/query?experienceKey=five-belo&api_key=a7da2d9674223332b4dcc7f7d19e57b1&v=20220511&version=STAGING&locale=en&verticalKey=locations&retrieveFacets=true&facetFilters=%7B%7D&skipSpellCheck=false&session_id=2ac0eae3-77dc-4f29-b42e-7956c52f44b0&locationRadius=400023360&sessionTrackingEnabled=true&sortBys=[]&source=STANDARD&limit=4`;
-
+  const url = `${AnswerExperienceConfig.endpoints.verticalSearch}?experienceKey=${AnswerExperienceConfig.experienceKey}&api_key=${AnswerExperienceConfig.apiKey}&v=20220511&version=${AnswerExperienceConfig.experienceVersion}&locale=${AnswerExperienceConfig.locale}&location=${location}&verticalKey=${AnswerExperienceConfig.verticalKey}&limit=4&retrieveFacets=true&skipSpellCheck=false&sessionTrackingEnabled=true&source=STANDARD`;
   console.log(url);
   const externalApiData = (await fetch(url).then((res: any) =>
     res.json()
@@ -292,8 +292,8 @@ const Location: Template<Locationtype> = ({
         <div className="centered-container">
          
           <div className=" grid gap-x-10 gap-y-10 md:grid-cols-3">
-           
-            <Details address={address} phone={mainPhone} services={services} hours={hours} c_getDirectionsCTAText={c_getDirectionsCTAText} latitude={latitude} longitude={longitude}/>
+    
+            <Details name={name} address={address} phone={mainPhone} services={services} hours={hours} c_getDirectionsCTAText={c_getDirectionsCTAText} latitude={latitude} longitude={longitude}/>
            
             {hours && <Hours title={"Restaurant Hours"} hours={hours} />}
 

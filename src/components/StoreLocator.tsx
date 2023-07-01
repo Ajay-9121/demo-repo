@@ -22,6 +22,7 @@ import {
 } from "@yext/search-headless-react";
 import { useEffect, useState } from "react";  
 import { BiLoaderAlt } from "react-icons/bi"; 
+
 import { LngLat, LngLatBounds } from "mapbox-gl";  
 
 // Mapbox CSS bundle
@@ -150,7 +151,7 @@ console.log(resultCount,"resultCount")
       <div className="flex h-[calc(100vh-242px)] border">
       {initialSearchState !== "complete" && (
           <div className="absolute z-20 flex h-full w-full items-center justify-center bg-white opacity-70">
-            <BiLoaderAlt className="animate-spin " size={100} />
+            <BiLoaderAlt className="animate-spin "  size={100} />
           </div>
         )}
         <div className="flex w-1/3 flex-col">
@@ -179,9 +180,12 @@ console.log(resultCount,"resultCount")
             ]}
             
           />
-           Show Result: {resultCount}
+          <div className="p-3 text-md">
+          Show Result: {resultCount}
+          </div>
           
-          {resultCount > 0 && <VerticalResults CardComponent={LocationCard}
+          
+         {resultCount > 0 && <VerticalResults CardComponent={LocationCard}
           
            customCssClasses={{ verticalResultsContainer: "overflow-y-auto" }}/>}
           
@@ -191,13 +195,14 @@ console.log(resultCount,"resultCount")
             </div>
           )}
          
-         
+          
         </div>
         <div className="w-2/3">
           
           <MapboxMap
             mapboxAccessToken={"pk.eyJ1Ijoic2h1YmhhbXNoYXJtYWRzIiwiYSI6ImNsZnFzdDF3YjAxbzczd2xkemF5aTU4bnEifQ.akdWeB5U30Rnk10mIwEdYQ "|| ""}
             PinComponent={MapPin} 
+            
             onDrag={handleDrag}
           />
      {showSearchAreaButton && (

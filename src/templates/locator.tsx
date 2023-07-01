@@ -38,6 +38,7 @@ const searcher = provideHeadless({
   // make sure your experience key matches what you see in the platform
   experienceKey: "five-belo",
   locale: "en",
+  
 
   endpoints: SandboxEndpoints,
   verticalKey: "locations",

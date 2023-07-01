@@ -17,12 +17,13 @@ let center = {
 const CustomMap = () => {
   return (
     <LoadScript googleMapsApiKey="AIzaSyDZNQlSlEIkFAct5VzUtsP4dSbvOr2bE18">
-      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={10}>
+      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={7}>
         {/* Child components, such as markers, info windows, etc. */}
         <></>
         <Marker
-          position={{ lat: 55.953251, lng: -3.188267 }}
+          position={{ lat: 55.953251, lng: -3.188267  }}
           icon={marker}
+         
         />
       </GoogleMap>
     </LoadScript>
