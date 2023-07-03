@@ -163,20 +163,20 @@ console.log(resultCount,"resultCount")
                 entityType: "location",
                 fieldApiName: "name",
               },
-              // {
-              //   entityType: "location",
-              //   fieldApiName: "address.postalCode",
+              {
+                entityType: "location",
+                fieldApiName: "address.postalCode",
 
-              //   },
+                },
 
-              // {
-              //   entityType: "location",
-              //   fieldApiName: "address.region",
-              // },
-              // {
-              //   entityType: "location",
-              //   fieldApiName: "address.city",
-              // },
+              {
+                entityType: "location",
+                fieldApiName: "address.region",
+              },
+              {
+                entityType: "location",
+                fieldApiName: "address.city",
+              },
             ]}
             
           />
