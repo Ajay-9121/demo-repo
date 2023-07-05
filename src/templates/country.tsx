@@ -84,7 +84,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
         type: "link",
         attributes: {
           rel: "shortcut icon",
-          href: favicon,
+          // href: favicon,
         },
       },
       {

@@ -32,16 +32,33 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = () => {
   };
 };
 
-const searcher = provideHeadless({
+const searcher:any = provideHeadless({
+
   apiKey: "a7da2d9674223332b4dcc7f7d19e57b1",
   
   // make sure your experience key matches what you see in the platform
   experienceKey: "five-belo",
   locale: "en",
-  
+  experienceVersion: "STAGING",
 
-  endpoints: SandboxEndpoints,
+  endpoints: {
+    universalSearch:
+      "https://liveapi-sandbox.yext.com/v2/accounts/me/answers/query",
+    verticalSearch:
+      "https://liveapi-sandbox.yext.com/v2/accounts/me/answers/vertical/query",
+    questionSubmission:
+      "https://liveapi-sandbox.yext.com/v2/accounts/me/createQuestion",
+    universalAutocomplete:
+      "https://liveapi-sandbox.yext.com/v2/accounts/me/answers/autocomplete",
+    verticalAutocomplete:
+      "https://liveapi-sandbox.yext.com/v2/accounts/me/answers/vertical/autocomplete",
+    filterSearch:
+      "https://liveapi-sandbox.yext.com/v2/accounts/me/answers/filtersearch",
+  },
   verticalKey: "locations",
+
+
+  
 });
 
 const Locator: Template<TemplateRenderProps> = (

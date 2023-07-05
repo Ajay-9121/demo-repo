@@ -26,7 +26,7 @@ const Breadcrumb = (props: BreadCrumbProps) => {
 console.log(slug,"sdflksdjfgl;dsjfgh;dfkl;h")
   if (slug) {
     return (
-      <Link href={slug +".html"}>
+      <Link href={slug}>
         <span className="font-bold hover:underline hover:cursor-pointer">
           {name}
         </span>
@@ -57,7 +57,7 @@ const BreadCrumbs = (props: BreadCrumbsProps) => {
                   {isFirst ? (
                     <Breadcrumb
                       name={<HomeIcon className="h-5 w-5" aria-hidden="true" />}
-                      slug={isLast ? "" : baseUrl + slug}
+                      slug={isLast ? "" :baseUrl + slug}
                       {...props}
                     />
                   ) : (

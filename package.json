@@ -21,6 +21,7 @@
     "node": ">=17"
   },
   "dependencies": {
+    "@css-modules-theme/core": "^2.3.0",
     "@headlessui/react": "^1.7.12",
     "@heroicons/react": "^2.0.14",
     "@react-google-maps/api": "^2.18.1",

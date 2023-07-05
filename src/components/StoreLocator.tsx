@@ -3,7 +3,7 @@
 import * as React from "react";
 import LocationCard from "./LocationCard"; 
 import {breadcrumbhome, center_latitude, center_longitude, googleApikey, search_icn, UseMylocationsvg } from "../../site-global/global";
-
+import marker from "../images/map.svg";
 import MapPin from "./MapPin";  
 import {
   MapboxMap,
@@ -12,7 +12,8 @@ import {
   VerticalResults,
   getUserLocation, 
   StandardCard,
-  OnDragHandler, 
+  OnDragHandler,
+  ResultsCount, 
 } from "@yext/search-ui-react";
 import {
   Matcher,
@@ -27,6 +28,7 @@ import { LngLat, LngLatBounds } from "mapbox-gl";
 
 // Mapbox CSS bundle
 import "mapbox-gl/dist/mapbox-gl.css";
+import ViewMore from "./locator/ViewMore";
 
 
 
@@ -92,7 +94,7 @@ console.log(resultCount,"resultCount")
               value: {
                 lat: location.coords.latitude,
                 lng: location.coords.longitude,
-                radius: 300000233.6, 
+                radius: 30000233.6, 
               },
               matcher: Matcher.Near,
             },
@@ -110,7 +112,7 @@ console.log(resultCount,"resultCount")
               value: {
                 lat: 55.953251,
                 lng: -3.188267,
-                radius: 3000233.6, 
+                radius: 300233.6, 
               },
               matcher: Matcher.Near,
             },
@@ -182,9 +184,18 @@ console.log(resultCount,"resultCount")
           />
           <div className="p-3 text-md">
           Show Result: {resultCount}
+          {/* <ResultsCount
+            // customCssClasses={{ container: "mx-2 my-0 text-dark-gray" }}
+          /> */}
           </div>
-          
-          
+        
+           
+         {/* <div className="button-bx">
+          <button>
+          <ViewMore  className={" btn notHighlight lg:!w-[132%] !mb-2 button view-more"} idName={"view-more-button"} buttonLabel="View More" />
+          </button>
+                
+               </div> */}
          {resultCount > 0 && <VerticalResults CardComponent={LocationCard}
           
            customCssClasses={{ verticalResultsContainer: "overflow-y-auto" }}/>}
@@ -194,17 +205,21 @@ console.log(resultCount,"resultCount")
               <p className="pt-4 text-2xl">No results found for this area</p>
             </div>
           )}
-         
-          
+        
         </div>
         <div className="w-2/3">
           
           <MapboxMap
             mapboxAccessToken={"pk.eyJ1Ijoic2h1YmhhbXNoYXJtYWRzIiwiYSI6ImNsZnFzdDF3YjAxbzczd2xkemF5aTU4bnEifQ.akdWeB5U30Rnk10mIwEdYQ "|| ""}
             PinComponent={MapPin} 
-            
+          
+          
             onDrag={handleDrag}
           />
+          
+          
+                
+               
      {showSearchAreaButton && (
             <div className="absolute bottom-10 left-0 right-0 flex justify-center">
               <button
@@ -216,6 +231,7 @@ console.log(resultCount,"resultCount")
             </div>
           )}
         </div>
+
        
       </div>
     </>

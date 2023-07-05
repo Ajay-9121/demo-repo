@@ -29,7 +29,7 @@ getBreadcrumb<DataType, Document>(
         } else if (index === 0) {
           breadcrumbs.push({
             slug: basePrefix,
-            name: baseName ? baseName : element.name,
+            name: baseName ? baseName :element.name,
           });
         }
       });
