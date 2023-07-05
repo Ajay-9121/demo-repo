@@ -57,7 +57,7 @@ const BreadCrumbs = (props: BreadCrumbsProps) => {
                   {isFirst ? (
                     <Breadcrumb
                       name={<HomeIcon className="h-5 w-5" aria-hidden="true" />}
-                      slug={isLast ? "" :baseUrl + slug}
+                      slug={isLast ? "" :baseUrl}
                       {...props}
                     />
                   ) : (
