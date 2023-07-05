@@ -117,9 +117,9 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
     }
   })
   if (!document.slug) {
-    url += `${result}.html`;
+    url += `${result}`;
   } else {
-    url += `${document.slug.toString()}.html`;
+    url += `${document.slug.toString()}`;
   }
 
   return url;
