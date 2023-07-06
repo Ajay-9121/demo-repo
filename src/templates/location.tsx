@@ -37,6 +37,7 @@ import PhotoGallery from "../components/PhotoGallery";
 import OpenClose from "../components/OpenClose"
 import { StaticData } from "../../site-global/staticData";
 import FeaturesBrand from "../components/FeatureBrand";
+import BannerSlide from "../components/BannerSlide";
 // import { AnswerExperienceConfig } from "../config/answersHeadlessConfig";
 
 import { nearByLocation } from "../types/nearByLocation";
@@ -86,7 +87,8 @@ export const config: TemplateConfig = {
       "c_faqSection.answer",
       "c_aboutUsSection",
       "c_photoGallery",
-      "c_featureBrand"
+      "c_featureBrand",
+      "c_bannerSlide"
     ],
     // The entity language profiles that documents will be generated for.
     localization: {
@@ -262,6 +264,7 @@ const Location: Template<Locationtype> = ({
     c_aboutUsSection,
     c_getDirectionsCTAText,
     c_featureBrand,
+    c_bannerSlide,
     
   } = document;
   console.log('document',)
@@ -282,6 +285,7 @@ const Location: Template<Locationtype> = ({
             breadcrumbs={breadcrumbs}
             baseUrl={relativePrefixToRoot}
           />
+           <BannerSlide c_bannerSlide={c_bannerSlide}/>
         <Banner
           name={name}
           address={address}
@@ -292,7 +296,7 @@ const Location: Template<Locationtype> = ({
         <div className="centered-container">
          
           <div className=" grid gap-x-10 gap-y-10 md:grid-cols-3">
-    
+         
             <Details name={name} address={address} phone={mainPhone} services={services} hours={hours} c_getDirectionsCTAText={c_getDirectionsCTAText} latitude={latitude} longitude={longitude}/>
            
             {hours && <Hours title={"Restaurant Hours"} hours={hours} />}
